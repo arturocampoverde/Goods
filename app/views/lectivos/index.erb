@@ -1,15 +1,18 @@
-<h1>PERIODO LECTIVO CREADO EN RUBY ON RAILS!!!</h1>
+
+<html>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+ <div id="login-form4"> 
+<br/><br/>
+<center><p><h3 style = "width: 200px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">PERIODOS LECTIVOS</font></b></h3></p></center>
+<table border="3" width="300" align="justify" cellspacing="5" background="/assets/imagesssss.jpg"> 
 <% @periodo.each do |f| %>
-<p>
-<%=f.period_fech_ini %>
-<%=f.period_fech_fin %>  
-<%=f.period_estad_lect %>
-
-<%= link_to "EDITAR", edit_lectivo_path(f) %>   
-<%= link_to "MOSTRAR", f %>  
-<%= link_to "ELIMINAR", f, :confirm => 'ESTAS SEGURISIMO ??', :method => :delete %>
-
-</p>
+<tr>
+<td align="center"><%=f.period_fech_ini %>
+<td align="center"><%=f.period_fech_fin %>  
+<td align="center"><%= link_to "EDITAR", edit_lectivo_path(f) %>   
+<td align="center"><%= link_to "ELIMINAR", f, :confirm => 'ESTA SEGURO??', :method => :delete %>
 <%end%>
 
-  
+</table>
+</div>
+</html>

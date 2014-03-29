@@ -1,48 +1,60 @@
-<center>FORMULARIO DE CREACIÓN DE CURSOS</center>
+<html>
+<head>
+<link rel="stylesheet" href="/assets/stylee.css"></link>
+ <script language="JavaScript" type="text/javascript" src="ajax.js"></script>
+</head>
+<body>  
+
 
 <%=form_for @curso , :url => {:action=>"create"} do |f| %>
-  
-  <font color ="#0400E4"  FACE="arial">INGRESE PARALELO</font>
-<table>
+    <div id="login-form4">
+      <%#*<h3 style = "width: 300px; margin: 1px 1px 10px 400px;"><b><font color="#3700FF">CREACIÓN DE CURSOS ACADÉMICOS</font></b></h3>%>
+      <fieldset style = "width: 400px; height:400px; margin: 1px 50px 65px 260px;">
+  <table width="5" border="4" align="justify">
+<font color ="#0400E4"  FACE="arial"><h3 style = "width: 300px; height: 20px;  margin: 1px 1px 10px 1px;"><b><font color="#3700FF">INGRESE PARALELO</font></b></h3></font>
 <font color ="#2A6913"   FACE="arial">  
-  <td><%=f.label "PARALELO"%> <%=f.text_field :cur_paralelo %></td>
-  <td><%=f.label "CAPACIDAD"%> <%=f.text_field :cur_capac %></td>
+  <td align="center"><%=f.label "PARALELO"%> <%=f.text_field :cur_paralelo %></td>
+  <td align="center"><%=f.label "CAPACIDAD"%> <%=f.text_field :cur_capac %></td>
 </font>
 </table>
-<p></p>
-        <FONT color ="#0400E4"  FACE="arial">NIVEL</FONT>
-          <table border="1" align="justify" >
-           <% @nivel.each do |nive| %>         
+ <p>
+  
+       <h3 style = "width: 300px; height: 20px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">NIVEL</font></b></h3>
+       <table border="1" align="justify" width="760">   
+           <% @nivel.each do |nive| %>                
+          
           <FONT color ="#2A6913"  FACE="arial">  
-            <tr><td> <%=f.radio_button :nivel_id, nive.id%>  <%= "Nivel: " %> <%=  nive.nivel_numero %>-<%=  nive.nivele.tip_niv_nombre %></td></tr>
-          </FONT>
+            <td align="center"> <%=f.radio_button :nivel_id, nive.id%><%=  nive.nivel_numero %>-<%=  nive.nivele.tip_niv_nombre %></td>
+          </FONT>          
         <%end%> 
           </table>
 
+<p>
 
 
-<p></p>
-        <FONT color ="#0400E4" FACE="arial">SECCION</FONT>
-          <table border="1" align="justify" >
+        <h3 style = "width: 300px; height: 20px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">SECCIÓN</font></b></h3>
+          <table border="1" align="justify">
            <% @seccion.each do |secc| %>         
           <FONT color ="#2A6913"  FACE="arial">          
-            <td> <%=f.radio_button :seccion_id, secc.id%>  <%= "Sección: " %> <%=  secc.secc_nombre %></td></td>        
+            <td align="center"> <%=f.radio_button :seccion_id, secc.id%>  <%= "Sección: " %> <%=  secc.secc_nombre %></td></td>        
           </FONT>
         <%end%>
           </table> 
  
+<p>
 
 
 
-<p></p>
-        <legend><FONT color ="#0400E4"  FACE="arial">PERIODO LECTIVO</FONT></legend>
-          <table border="1" align="justify" >
+        <h3 style = "width: 300px; height: 20px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">PERIODO LECTIVO</font></b></h3>
+        <table width="500" border="1" align="justify">
             <FONT color ="#2A6913"  FACE="arial">            
-            <td> <%=f.radio_button :periodo_id, @periodo.id%>  <%= "Periodo Lectivo: " %> "INICIA"-- <%=  @periodo.period_fech_ini %> ------ "FINALIZA" -- <%=  @periodo.period_fech_fin %></td></td>
+            <td align="center"> <%=f.radio_button :periodo_id, @periodo.id%>  <%= "Periodo Lectivo: " %> "INICIA"-- <%=  @periodo.period_fech_ini %> ------ "FINALIZA" -- <%=  @periodo.period_fech_fin %></td></td>
           </FONT>
           </table>        
 <center>
 <%=  f.submit "GUARDAR" %>
+    </fieldset>
+      </div>
   <% if @curso.errors.any? %>
 
             <div align="left">             
@@ -55,4 +67,5 @@
             </div>
           <% end %>
 </center>
+                </div>
 <%end%>

@@ -1,5 +1,20 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="/assets/stylee.css"></link>
+    </head>
+<body bgcolor="#FFEFEF">
+<br/>
+
+  <center><h1>EDITE MALLA CURRICULAR</h1></center>
+<div align="center">
 <%=form_tag  mallactual_path do %>
-<table> ESCOJA EL TIPO DE MALLA
+  <div id="login-form4">
+     <fieldset style = "width: 700px; margin: 50px 50px 65px 310px;">   
+<h3 style = "width: 300px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">TIPO DE MALLA</font></b></h3>
+    
+
+ 
+<table>
   <% @clase.each do |clase| %>
 <tr>
 <td>
@@ -15,7 +30,7 @@
 <br>
 
 
-<table> ESCOJA EL CURSO O NIVEL
+<table><h3 style = "width: 300px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">NIVEL</font></b></h3>
 <% @nivel.each do |niv| %>
 <tr>
 <td> 
@@ -34,7 +49,7 @@
 
 
 
- ESCOJA LA ASIGNATURA
+ <h3 style = "width: 300px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">ESCOJA LA ASIGNATURA</font></b></h3>
   <table border="3" align="justify" >
    <td> <%@asignatura.each do |asignatura|%>
       <%msg="false"%>
@@ -56,5 +71,10 @@
   <%#= @nivel_actual.id %>
   <%#= @mallas.id %>
  <%= submit_tag "GUARDAR" %>
+ </fieldset>
+  </div>
 <%end%>
  
+</div>
+</body>
+</html>

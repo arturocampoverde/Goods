@@ -1,5 +1,5 @@
 <html>
-    <link rel="stylesheet" href="/stylesheets/style.css"></link>
+    <link rel="stylesheet" href="/assets/stylee.css"></link>
   <head>
     <script language="JavaScript">/*Esta es una funcion para verificar la cedula en el checkbox de lapagina*/
       function check_cedula( form )
@@ -31,6 +31,8 @@
         return false;
      }
   </script>
+    
+ <body id="registropapa">   
 
     
 <script type="text/javascript"> //SOLO NUMEROS
@@ -76,31 +78,28 @@
       <% end %>
       <div onkeypress="return ValidNum(event)">    
         <form method="post">
-          <%= f.text_field :pers_cedula, :placeholder=>"Cédula", :class=>"pers_ced"%><%= @person.errors.full_messages.first if @person.errors.any? %></font>
+          Cédula:<%= f.text_field :pers_cedula, :class=>"pers_ced"%><%= @person.errors.full_messages.first if @person.errors.any? %></font>
           <input name="send" type="button" value="Comprobar Cédula" onClick="return check_cedula(this.form);" />
         </form>
       </div>
       <div onkeypress="return isNumberKey(event)">  
-        <%= f.text_field :pers_nombre, :placeholder=>"Nombres" %>
+        Nombres:<%= f.text_field :pers_nombre%>
       </div>
       <div onkeypress="return isNumberKey(event)">  
-        <%= f.text_field :pers_apellido, :placeholder=>"Apellidos" %>
+        Apellidos:<%= f.text_field :pers_apellido%>
       </div>
-      <%= f.text_field :pers_direccion, :placeholder=>"Dirección" %>
+      Dirección:<%= f.text_field :pers_direccion%>
       <div onkeypress="return ValidNum(event)">
-        <%= f.text_field :pers_telefono1, :placeholder=>"Telefono Convencional" %>
-        <%= f.text_field :pers_telefono2, :placeholder=>"Celular" %>
+        Teléfono Convencional:<%= f.text_field :pers_telefono1%>
+        Teléfono Celular:<%= f.text_field :pers_telefono2%>
       </div>
-     <div>
-     <%= f.text_field :pers_email, :placeholder=>"Email" %>
-     </div>
     <%end%> <!-- -------------------------------------- FIN DEL FORM FOR @person-->
 
     <%if @estudiante != "true"%>
-      <h3>TIPO DE PERSONA</h3>
+      <legend>TIPO DE PERSONA</legend>
       <%= fields_for :tipo do |f| %>          
         <div onkeypress="return isNumberKey(event)">  
-          <%= f.text_field :tip_descrip, :placeholder=>"Descripcion" %>
+          <%= f.text_field :tip_descrip%>
         </div>
       <%end%>   
     <%else%>
@@ -111,37 +110,35 @@
       <%end%>
     <%end%>    
   <!--</fieldset>-->
-  <%#*<h3>REPRESENTANTE</h3>%>
-  <%#*<!--<fieldset>-->%>
-  <%#= fields_for :repre do |f| %>
-    <%#= f.text_field :pers_cedula, :placeholder=>"Cédula" %>
-    <%#*<div onkeypress="return isNumberKey(event)">%>
-      <%#= f.text_field :pers_nombre, :placeholder=>"Nombres" %>
-    <%#*</div>%>
-    <%#*<div onkeypress="return isNumberKey(event)">%> 
-      <%#= f.text_field :pers_apellido, :placeholder=>"Apellidos" %>
-    <%#*</div>%>
-    <%#= f.text_field :pers_direccion, :placeholder=>"Dirección" %>
-    <%#*<div onkeypress="return ValidNum(event)">%>
-      <%#= f.text_field :pers_telefono1, :placeholder=>"Telefono Convencional" %>
-    <%#*</div>%>
-    <%#*<div onkeypress="return ValidNum(event)">%>
-      <%#= f.text_field :pers_telefono2, :placeholder=>"Telefono Celular" %>
-    <%#*</div>%>  
-
-  
-  <%#end%>
-  <%#= fields_for :representante do |f| %> 
-    <%#*<div onkeypress="return isNumberKey(event)">%>
-      <%#= f.text_field :repre_parentesco, :placeholder=>"Parentezco" %>
-    <%#*</div>%>
-  <%#end%>
+  <h3>REPRESENTANTE</h3>
+  <!--<fieldset>-->
+  <%= fields_for :repre do |f| %>
+    Cédula:<%= f.text_field :pers_cedula%>
+    <div onkeypress="return isNumberKey(event)">
+     Nombres: <%= f.text_field :pers_nombre%>
+    </div>
+    <div onkeypress="return isNumberKey(event)"> 
+     Apellidos: <%= f.text_field :pers_apellido%>
+    </div>
+    Dirección:<%= f.text_field :pers_direccion%>
+    <div onkeypress="return ValidNum(event)">
+      Teléfono Convencional:<%= f.text_field :pers_telefono1%>
+    </div>
+    <div onkeypress="return ValidNum(event)">
+      Teléfono Celular:<%= f.text_field :pers_telefono2%>
+    </div>
+  <%end%>
+  <%= fields_for :representante do |f| %> 
+    <div onkeypress="return isNumberKey(event)">
+      Parentezco:<%= f.text_field :repre_parentesco%>
+    </div>
+  <%end%>
 <%end%> <!-- -------------------------------------- FIN DEL FIELDS FOR :persona-->
 <%= f.submit "REGISTRAR" %>
+<%= link_to "Regresar al Menú Principal", root_path %>
 </fieldset>
 <% end %>
 </div>
 </body>
+</body>
 </html>
-
-<center><%= link_to "Regresar al Menú Principal", asignaturas_menu_principal_admin_path %></center>

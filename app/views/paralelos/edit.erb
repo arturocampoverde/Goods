@@ -1,63 +1,77 @@
-<h1>EDITAR PARALELOS</h1>
+<html>
+<head>  
+ <link rel="stylesheet" href="/assets/stylee.css"></link>
+</head>
 
+<body>
+<div align="center">
+
+<div id="login-form4">
 <%=form_for @cursos do |f| %>
-
- <fieldset class="step">
-  <legend><FONT color ="#0400E4"  SIZE="2" FACE="arial">INGRESE PARALELO</FONT></legend>
-
+    
+  
+  
+  
+ <fieldset style = "width: 620px; height:200px; margin: 1px 50px 65px 300px;">
+        <h3 style = "width: 200px; margin: 1px 1px 10px 10px;"><b><font color="#3700FF">EDITE CURSOS ACADÉMICOS</font></b></h3>
+  <FONT color ="#0400E4"  SIZE="2" FACE="arial">INGRESE PARALELO</FONT>
+<table>  
 <FONT color ="#2A6913"  SIZE="2" FACE="arial">
-  <%=f.label "PARALELO"%>
-  <%=f.text_field :cur_paralelo %><br/>
-  <%=f.label "CAPACIDAD"%>
-  <%=f.text_field :cur_capac %><br/>
+  <td><%=f.label "PARALELO"%><center><%=f.text_field :cur_paralelo%></center><%=f.label "CAPACIDAD"%><center><%=f.text_field :cur_capac %></center></td>
 </FONT>
+</table>
 </fieldset>
-<br>
 
 
-<fieldset class="step">
-        <legend><FONT color ="#0400E4"  SIZE="2" FACE="arial">NIVEL</FONT></legend>
-          <table border="1" align="justify" >
-            <tr>
+<fieldset style = "width: 620px; height:70px; margin: -68px 50px 65px 300px;">
+           <h3 style = "width: 100px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">NIVEL</font></b></h3>
+          <table border="1" align="left" >
+            
            <% @nivel.each do |nive| %>
           <FONT color ="#2A6913"  SIZE="2" FACE="arial">
             <td> <%=f.radio_button :nivel_id, nive.id%>  <%= "Nivel: " %> <%=  nive.nivel_numero %>-<%=  nive.nivele.tip_niv_nombre %></td>
           </FONT>
-        <%end%>
-              </tr>
+        <%end%>            
           </table>
 </fieldset>
 
 
 
-<br>
-<fieldset class="step">
-        <legend><FONT color ="#0400E4"  SIZE="2" FACE="arial">SECCION</FONT></legend>
-          <table border="1" align="center" >
+
+<fieldset style = "width: 620px; height:91px; margin: -68px 50px 65px 300px;">
+        <h3 style = "width: 100px; margin: 1px 1px 10px 1px;"><b><font color="#3700FF">SECCIÓN</font></b></h3>
+          <table border="1" align="left">
            <% @seccion.each do |secc| %>
           <FONT color ="#2A6913"  SIZE="2" FACE="arial">
-            <td> <%=f.radio_button :seccion_id, secc.id%>  <%= "Sección: " %> <%=  secc.secc_nombre %></td></td>
+            <td align="center"> <%=f.radio_button :seccion_id, secc.id%>  <%= "Sección: " %> <%=  secc.secc_nombre %></td></td>
           </FONT>
         <%end%>
-          </table>
+          </table>       
 </fieldset>
 
 
 
 
-<br>
-<fieldset class="step">
-        <legend><FONT color ="#0400E4"  SIZE="2" FACE="arial">PERIODO LECTIVO</FONT></legend>
-          <table border="1" align="center" >
+
+<%#*<fieldset style = "width: 1120px; height:91px; margin: -68px 50px 65px 100px;">%>  
+        <%#*<h3 style = "width: 100px; margin: 100px 10px 10px 130px;"><b><font color="#3700FF">PERIODO LECTIVO</font></b></h3>%>
+        <table width="10" border="1" align="left" height="50">
            <% @periodo.each do |period| %>
-          <FONT color ="#2A6913"  SIZE="2" FACE="arial">
-            <td> <%=f.radio_button :periodo_id, period.id%>  <%= "Periodo Lectivo: " %> "INICIA"-- <%=  period.period_fech_ini %> ------ "FINALIZA" -- <%=  period.period_fech_fin %></td></td>
-          </FONT>
+          <font size="50" color ="#2A6913" face="arial">
+            <td> <%=f.radio_button :periodo_id, period.id%> <font size="2" color ="#2A6913" face="arial">
+           Periodo Lectivo:<%=period.period_fech_ini %>--<%=period.period_fech_fin %></font> </td>
+          </font>
         <%end%>
           </table>
-</fieldset>
-<center>
-<%=  f.submit "GUARDAR" %>
+<%#*</fieldset>%>
+
+ </div>
+<div><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/> <br/>
+<center><%=  f.submit "GUARDAR" %></center>
+  </div>
+  <%#*<fieldset/>%>
+ 
+  
   <% if @cursos.errors.any? %>
 
             <div align="left">
@@ -71,3 +85,8 @@
           <% end %>
 </center>
 <%end%>
+
+
+
+</body>
+</html>

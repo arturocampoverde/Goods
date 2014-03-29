@@ -1,4 +1,6 @@
-<center><H1><font color ="#0932FF"> HORARIO ACADÉMICO DE CLASES </font></H1></center>
+<div id="pagina" style=" background-color: #E2F5FF; height: 506px; width: 1300px; border: 1px solid black;">          
+
+<center><H1><font color ="#0932FF"> HORARIO DEL DISTRIBUTIVO ACADÉMICO DE CLASES </font></H1></center>
 
 <html>
   <head>
@@ -22,13 +24,13 @@
   <body>
        
     <div id="Contenedor2">
-    <table border="1" width="698px">
+    <table border="1" width="705px">
         <%@distributivo.each do |f| %>
           <tr>
-            <td><font color ="#3300FF"> </font><%=f.curso.nivel.nivel_numero%></td>
-            <td><font color ="#3300FF"> </font><%=f.curso.cur_paralelo%></td>
-            <td><font color ="#3300FF"> </font><%=f.asignatura.asig_nombre%></td>
-            <td><font color ="#3300FF"> </font><%=f.distr_horarioa%></td>
+            <td><font color ="#3300FF" size="4">NIVEL</font>  <font color ="#3300FF" size="2"><%=f.curso.nivel.nivel_numero%></font></td>
+            <td><font color ="#3300FF" size="4">PARALELO</font>  <font color ="#3300FF" size="2"></font><%=f.curso.cur_paralelo%></font></td>
+            <td><font color ="#3300FF" size="4">ASIGNATURA</font> <font color ="#3300FF" size="2"><%=f.asignatura.asig_nombre%></font></td>
+            <td><font color ="#3300FF" size="4">DÍAS</font> <font color ="#3300FF" size="2"><%=f.distr_horarioa%></font></td>
           </tr>
         <%end%>
     </table>
@@ -37,11 +39,4 @@
   </body>
 </html> 
 
-
-
-
-
-<%#*<td><font color ="#3300FF">PROFESOR--></font><%=f.persona.pers_nombre%> 
-<%#=f.persona.pers_apellido%>
-<%#*<td><font color ="#3300FF">ASIGNATURA--></font><%=f.asignatura.asig_nombre%>
-<%#*<td><%=f.nivele.tip_niv_nombre%>
+</div>
