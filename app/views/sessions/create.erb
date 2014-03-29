@@ -526,8 +526,8 @@ document.write(D);
   
   <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">NOTAS</font></b></a>
                 <ul>
-                    <li><a href="javascript:Solicitud('notasacademicas/index.html','pagina')"><b>Notas Académicas Actuales</b></a></li>
-                    <li><a href="javascript:Solicitud('notasacademicas/estadistica.html','pagina')"><b>Notas Académicas Años Anteriores</b></a></li>
+                    <li><a href="javascript:Solicitud('notasacademicas/index.html','pagina')"><b>Ver Notas</b></a></li>
+                    
                 </ul>
   </li>
   
@@ -541,13 +541,30 @@ document.write(D);
                     <%else%>
                        <li><%= link_to 'Hoja de Matricula', matriculasacademicas_new_path %></li>
                     <%end%>
-                <li><a href="javascript:Solicitud('matriculasacademicas/listado.html','pagina')">  <b>Ver hojas de Matriculas</b></a></li>
+  <li><a href="javascript:Solicitud('matriculasacademicas/listado.html','pagina')">  <b>Ver hojas de Matriculas</b></a></li>
+
 
                 <li><%= link_to 'Imprimir Hoja de Matricula', matriculasacademicas_imprimir_path %></li>
                 </ul>
+
+
+                 
+                 
+
+
   </li>
  
+  
+  
 
+
+  
+ 
+  <%#*<li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>SUGERENCIAS</b></font></b></a>%>
+                <%#*<ul>%>
+                     <%#*<li><a href="javascript:Solicitud('matriculasacademicas/consultas_correo.erb','pagina')"><b>Consultas</b></a></li>%>
+                <%#*</ul>%>    
+  <%#*</li>%>
   
   </ul>   
    
@@ -1027,16 +1044,16 @@ document.write(D);
     
          <div id="navidada">
     
-<div align="center">                                  
+    <div align="center">                                  
       <p><font color="#1C2ACB" SIZE="6" FACE="algerian"><b>UNIDAD EDUCATIVA PARTICULAR MIXTA</b></font> <font color="#230000" SIZE="6" FACE="algerian"><b>"JUAN PABLO II"</b></font></p>
     </div>               
     
   <ul id="navidad">   
   
-  <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">VER CURRICULUM</font></b></a>
+  <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER CURRICULUM</font></b></a>
                 <ul>
-                    <li><a href="javascript:Solicitud('secretarias/new.html','pagina')"><b><font FACE="ARIAL">CREAR CURRICULUM</font></b></a></li>
-                    <li><a href="javascript:Solicitud('secretarias/curriculsecretari.html','pagina')"><b><font FACE="ARIAL">VER CURRCULUM</font></b></a></li>
+                    <li><a href="javascript:Solicitud('secretarias/new.html','pagina')"><b>CREAR CURRICULUM</b></a></li>
+                    <li><a href="javascript:Solicitud('secretarias/curriculsecretari.html','pagina')"><b>VER CURRCULUM</b></a></li>
                                                                                    
                 </ul>
   </li>
@@ -1057,7 +1074,7 @@ document.write(D);
   
   
 
-  <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">NOTAS ACADÉMICAS</font></b></a>  
+  <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER NOTAS ACADÉMICAS</font></b></a>  
                 <ul>
                     
                     
@@ -1067,9 +1084,9 @@ document.write(D);
   
   
   
-  <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">MALLAS CURRICULARES</font></b></a>  
+  <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER MALLAS CURRICULARES</font></b></a>  
                 <ul>
-                  <li><a href="javascript:Solicitud('secretariasis/ind_mall.html','pagina')"><b><font FACE="ARIAL">VER MALLAS CURRICULARES POR PERIODO LECTIVO</font></b></a></li>
+                  <li><a href="javascript:Solicitud('secretariasis/ind_mall.html','pagina')"><b>VER MALLAS CURRICULARES POR PERIODO LECTIVO</b></a></li>
                     <%#*<li><a href="javascript:Solicitud('secretaria_menu/mallas.html','pagina')"><b>VER MALLAS CURRICULARES</b></a></li>%>   
                     <%#*<li><a href="javascript:Solicitud('secretaria_menu/mallas.html','pagina')"><b>VER</b></a></li>%>   
                 </ul>
@@ -1089,40 +1106,44 @@ document.write(D);
   
   
   
-  <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">DISTRIBUTIVO</font></b></a>  
+  <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER DISTRIBUTIVO</font></b></a>  
                 <ul>
                     <%#*<li><a href="javascript:Solicitud('secretaria_menu/horario.html','pagina')"><b>HORARIO DE CLASES DE LOS PROFESORES</b></a></li>%>
-                    <li><a href="javascript:Solicitud('secretariasis/ind_distr.html','pagina')"><b><font FACE="ARIAL">VER DISTRIBUTIVO POR PERIODO LECTIVO</font></b></a></li>
+                    <li><a href="javascript:Solicitud('secretarias/ind_distr.html','pagina')"><b>VER DISTRIBUTIVO POR PERIODO LECTIVO</b></a></li>
                 </ul>
   
   </li>
   
   
   
-    <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">ESTADO DE ESTUDIANTES</font></b></a>  
+    <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER ESTADO DE ESTUDIANTES</font></b></a>  
                 <ul>
-                    <li><a href="javascript:Solicitud('secretariasis/ind_estud_estado.html','pagina')"><b><font FACE="ARIAL">VER ESTADO DE ESTUDIANTES</font></b></a></li>                    
+                    <li><a href="javascript:Solicitud('secretariasis/ind_estud_estado.html','pagina')"><b>VER ESTADO DE ESTUDIANTES</b></a></li>                    
                 </ul>
   
     </li>
     
     
      
-    <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">NÓMINA DE ESTUDIANTES</font></b></a>  
+    <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">VER NÓMINA DE ESTUDIANTES</font></b></a>  
                 <ul>
-                    <li><a href="javascript:Solicitud('secretariasis/ind_estud.html','pagina')"><b><font FACE="ARIAL">VER NÓMINA DE ESTUDIANTES</font></b></a></li>                    
+                    <li><a href="javascript:Solicitud('secretariasis/ind_estud.html','pagina')"><b>VER NÓMINA DE ESTUDIANTES</b></a></li>                    
                 </ul>
   
     </li>
-    
-    
-   <li><a href="#"><b><font FACE="ARIAL" color="C13131" size="2">ESTUDIANTES INSCRITOS</font></b></a>
-                <ul>                   
-                    <li><font FACE="ARIAL"><b><%= link_to "BUSCAR ESTUDIANTES", result_buscar_path(:cedula_estudiante=>nil) %></b></font></li>
+
+
+    <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">BUSCAR ESTUDIANTES INSCRITOS</font></b></a>
+                <ul>
+                    <!--<li><a href="javascript:Solicitud('secretariasis/buscar.html','pagina')"><b>BUSCAR ESTUDIANTES</b></a></li>-->
+                    <li><%= link_to "BUSCAR ESTUDIANTES", result_buscar_path(:cedula_estudiante=>nil) %></li>
+
+
                 </ul>
 
     </li>
-  </ul>    
+    
+  </ul>   
    
    
    

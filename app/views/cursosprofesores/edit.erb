@@ -1,46 +1,3 @@
-
-    <div align="center">    
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>S</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>I</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>U</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>J</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>U</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>A</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>N</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>P</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>A</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>2</b></span></font>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold"><span style="font-size:24px"><b>CARTILLA DE CALIFICACIONES</b></span></font>
-    </div>
-
-
-<html>
-<body>
-
-<script type="text/javascript"> //SOLO NUMEROS
-  function validate(n)
-  {
-    //var n=document.MyForm.num.value;
-    if (n=0 || n >10)
-    { alert("Por Favor ingrese calificaciones entre 0-10");
-      //document.MyForm.num.value="";
-    }
-  }
-
-  function ValidNum(e) {
-    var deberes_arr = document.getElementsByClassName("tareas");
-    var tecla= document.all ? tecla = e.keyCode : tecla = e.which;
-    return ((tecla > 47 && tecla < 58) || tecla == 46 || tecla ==8 || tecla == '\t');
-    for (var i = 0; i < deberes_arr.length; i++) {
-      validate(deberes_arr[i].value);
-    }
-}
-</script>
-
-
-
-
 <script>
   $(document).change(function() {
     //variables para calcular promedio
@@ -257,33 +214,20 @@
     }*/
 });
 </script>
-  
-  
-<table align="center" border=10>  
-  
 
 <%if @distributivo.persona_id == current_user.persona_id%>
 <html>
 
 <body>
   <br/>
-  
-    <font color="#2600FF" face="Copperplate Gothic Bold">ASIGNATURA:</font> <%=@distributivo.asignatura.asig_nombre %>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">DOCENTE:</font> <%= @distributivo.persona.pers_nombre %> <%= @distributivo.persona.pers_apellido %>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">NIVEL:</font> <%= @distributivo.curso.nivel.nivel_numero%>  
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">PARALELO:</font> <%= @distributivo.curso.cur_paralelo%>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">SECCIÓN:</font> <%= @distributivo.curso.seccion.secc_nombre%>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">PERIODO LECTIVO:</font> <%= @distributivo.curso.periodo.period_fech_ini%> - <%= @distributivo.curso.periodo.period_fech_fin%>
-    <br/>
-    <font color="#2600FF" face="Copperplate Gothic Bold">CARTILLA #:</font> <%=  %>
-    <br/><br/><br/>
-    
 
+ <%= "Asignatura: " + @distributivo.asignatura.asig_nombre %>
+<br/>
+ <%= "Docente: " + @distributivo.persona.pers_nombre %> <%= @distributivo.persona.pers_apellido %>
+<br/>
+
+Nivel: <%= @distributivo.curso.nivel.nivel_numero%>  Paralelo: <%= @distributivo.curso.cur_paralelo%>
+  <table>
     <tr align="center">
       <td rowspan="2">Alumnos</td>
       <td align="center" colspan ="2">TAREAS</td>
@@ -314,25 +258,25 @@
         <tr align="center">
           <td><%= label_tag a.matricula.persona.pers_nombre + " " + a.matricula.persona.pers_apellido, nil, :class=>"alumnos"%></td>
 
-          <td><div onkeypress="return ValidNum(event)"><%= text_field_tag "tarea[]", a.calif_tarea, :class => "tareas", :id => "tareas_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></div></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "tareas_cualit", :id => "tareas_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "tarea[]", a.calif_tarea, :class => "tareas", :id => "tareas_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "tareas_cualit", :id => "tareas_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
-          <td><div onkeypress="return ValidNum(event)"><%= text_field_tag "act_indiv[]", a.calif_act_indv, :class => "act_indivs", :id => "act_indivs_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></div></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "act_indivs_cualit", :id => "act_indivs_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "act_indiv[]", a.calif_act_indv, :class => "act_indivs", :id => "act_indivs_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "act_indivs_cualit", :id => "act_indivs_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
-          <td><div onkeypress="return ValidNum(event)"><%= text_field_tag "act_grup[]", a.calif_act_grup, :class => "act_grups", :id => "act_grups_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></div></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "act_grups_cualit", :id => "act_grups_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "act_grup[]", a.calif_act_grup, :class => "act_grups", :id => "act_grups_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "act_grups_cualit", :id => "act_grups_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
-          <td><div onkeypress="return ValidNum(event)"><%= text_field_tag "leccion[]", a.calif_leccion, :class => "lecciones", :id => "lecciones_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></div></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "lecciones_cualit", :id => "lecciones_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "leccion[]", a.calif_leccion, :class => "lecciones", :id => "lecciones_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "lecciones_cualit", :id => "lecciones_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
-          <td><div onkeypress="return ValidNum(event)"><%= text_field_tag "examen[]", a.calif_examen, :class => "examenes", :id => "examenes_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></div></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "examenes_cualit", :id => "examenes_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "examen[]", a.calif_examen, :class => "examenes", :id => "examenes_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "examenes_cualit", :id => "examenes_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
           <%= hidden_field_tag "total[]", a.calif_total, :class => "totales", :id => "totales_"+ "#{a.matricula.persona.id}", :readonly => "true"%>
 
           <td><%= text_field_tag "promedio[]", a.calif_promedio, :class => "promedios", :id => "promedios_"+ "#{a.matricula.persona.id}", :readonly => "true", :style => "width:50px"%></td>
-          <td><%= text_field_tag "cualitativo", 0, :class => "promedios_cualit", :id => "promedios_cualit_"+ "#{a.id}", :readonly => "true", :style => "width:50px"%></td>
+          <td><%= text_field_tag "cualitativo", 0, :class => "promedios_cualit", :id => "promedios_cualit_"+ "#{a.id}", :style => "width:50px"%></td>
 
           <td><%= text_field_tag "conducta[]", a.calif_conducta, :class => "conductas", :id => "conductas_"+ "#{a.matricula.persona.id}", :style => "width:50px"%></td>
           <%= hidden_field_tag "calificaciones_ids[]", a.id %>
@@ -400,22 +344,3 @@
 </html>
 
 <%end%>
-
-
-
-<SCRIPT language="JavaScript">
-function validate()
-{
-var n=document.MyForm.num.value; //Get the value of textbox into variable
-if (n=0 || n >10)
-{alert("Por Favor ingrese calificaciones entre 0-10");
-document.MyForm.num.value="";
-}
-}
-</SCRIPT>
-<FORM name="MyForm">
-Ingrese Rango de Calificacion: <INPUT type="text" name="num" size=2>
-<INPUT type="button" name="Check" value="Comprobar Rango de Calificaciones" onClick="validate()">
-</FORM>
-
-

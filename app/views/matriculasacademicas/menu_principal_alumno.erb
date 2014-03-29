@@ -208,8 +208,8 @@ document.write(D);
   
   <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">NOTAS</font></b></a>
                 <ul>
-                    <li><a href="javascript:Solicitud('notasacademicas/index.html','pagina')"><b>Notas Académicas Actuales</b></a></li>                                                      
-                    <li><a href="javascript:Solicitud('notasacademicas/estadistica.html','pagina')"><b>Notas Académicas Años Anteriores</b></a></li>
+                    <li><a href="javascript:Solicitud('notasacademicas/index.html','pagina')"><b>Ver Notas</b></a></li>                                  
+                    
                 </ul>
   </li>
   
@@ -218,14 +218,13 @@ document.write(D);
   <li><a href="#"><b><font FACE="LUCIDA CONSOLE" color="C13131" size="3">MATRICULAS</font></b></a>    
                 <ul>                    
                     <%#*<li><a href="javascript:Solicitud('matriculasacademicas/new.html','pagina')"> <b>Hoja de Matricula</b></a></li>%>
-                          <%if @matr_enc == "yes" %>
-                        
+                    <%if @periodo_actual.id == @period_act_matr_alum.id%>
+                       
                     <%else%>
                        <li><%= link_to 'Hoja de Matricula', matriculasacademicas_new_path %></li>
                     <%end%>
-                <li><a href="javascript:Solicitud('matriculasacademicas/listado.html','pagina')">  <b>Ver hojas de Matriculas</b></a></li>
-                <li><%= link_to 'Imprimir Hoja de Matricula', matriculasacademicas_imprimir_path %></li>
-                </ul>  
+   <li><a href="javascript:Solicitud('matriculasacademicas/listado.html','pagina')">  <b>Ver hojas de Matriculas</b></a></li>
+                </ul>    
   </li>
 
  

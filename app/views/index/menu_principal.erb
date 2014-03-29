@@ -131,8 +131,6 @@ document.write(D);
        </div>
 
        <%end%>
-    
-
 
   <body id="body2">        
     <div align="left">                                 
@@ -142,68 +140,56 @@ document.write(D);
     
     
     
-    <%#if current_user%>
-    <%#else%>
+    <%if current_user%>
+    <%else%>
     <div align="right">
-    <u><%= link_to "INICIE SESIÓN", login_path , {:style => 'color: #C50000'} %></u><br>
-    <u><%= link_to "REGISTRO DE ALUMNO", signup_estud_path(:estudiante=>"true"), {:style => 'color: #C50000'} %></u>
-     </div>
-    <%#end%>
+    <%= link_to "INICIE SESIÓN", login_path , {:style => 'color: #C50000'} %>
+    <%= link_to "REGISTRO DE ALUMNO", signup_path(:estudiante=>"true"), {:style => 'color: #C50000'} %>
+    <br></br>    
+    </div>
+    <%end%>
    
  
-    <HR color="#0900FF" noshade size="12" width="100%">  
+    <HR noshade size="8" width="100%">  
 
     
     
        
 
-  <%#if current_user%> 
+  <%if current_user%> 
   <%else%>
 
 <div id ="image_gallery">
-<%#*<img align="right" <%=image_tag "pa3.jpg"%>
-<%#*<img align="right" <%=image_tag "pa4.jpg"%>
-<%#*<img align="right" <%=image_tag "papin.jpeg"%>
-<%#*<img align="right" <%=image_tag "an1.jpg"%>
-<%#*<img align="right" <%=image_tag "an2.jpg"%>
-<%#*<img align="right" <%=image_tag "an3.jpg"%>
-<%#*<img align="right" <%=image_tag "an4.jpg"%>
-<%#*<img align="right" <%=image_tag "an5.jpg"%>
-<%#*<img align="right" <%=image_tag "an6.jpg"%>
-<%#*<img align="right" <%=image_tag "an7.jpg"%>
-<%#*<img align="right" <%=image_tag "an8.jpg"%>
-<%#*<img align="right" <%=image_tag "an9.jpg"%>
-<%#*<img align="right" <%=image_tag "an10.jpg"%>
-<%#*<img align="right" <%=image_tag "an12.jpg"%>
-<%#*<img align="right" <%=image_tag "an13.jpg"%>
-<%#*<img align="right" <%=image_tag "an14.jpg"%>
-<%#*<img align="right" <%=image_tag "an15.jpg"%>
+<img align="right" <%=image_tag "pa3.jpg"%>
+<img align="right" <%=image_tag "pa4.jpg"%>
+<img align="right" <%=image_tag "papin.jpeg"%>
+<img align="right" <%=image_tag "an1.jpg"%>
+<img align="right" <%=image_tag "an2.jpg"%>
+<img align="right" <%=image_tag "an3.jpg"%>
+<img align="right" <%=image_tag "an4.jpg"%>
+<img align="right" <%=image_tag "an5.jpg"%>
+<img align="right" <%=image_tag "an6.jpg"%>
+<img align="right" <%=image_tag "an7.jpg"%>
+<img align="right" <%=image_tag "an8.jpg"%>
+<img align="right" <%=image_tag "an9.jpg"%>
+<img align="right" <%=image_tag "an10.jpg"%>
+<img align="right" <%=image_tag "an12.jpg"%>
+<img align="right" <%=image_tag "an13.jpg"%>
+<img align="right" <%=image_tag "an14.jpg"%>
+<img align="right" <%=image_tag "an15.jpg"%>
 </div>
-     <%#end%>  
-   <br><br><br><br><br><br><br><br>
-    <div align="center">    
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>S</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>I</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>U</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>J</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>U</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>A</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:45px"><b>N</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:56px"><b>P</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:66px"><b>A</b></span></font>
-    <font color="#C60000" face="Copperplate Gothic Bold"><span style="font-size:86px"><b>2</b></span></font>
-    </div> 
+     <%end%>  
+ 
     
-
     
     
     <div align="center">                                  
-      <p><font color="#444040" SIZE="6" FACE="algerian"><b>UNIDAD EDUCATIVA PARTICULAR MIXTA</b></font> <font color="#444040" SIZE="6" FACE="algerian"><b>"JUAN PABLO II"</b></font></p>
+      <p><font color="#1C2ACB" SIZE="6" FACE="algerian"><b>UNIDAD EDUCATIVA PARTICULAR MIXTA</b></font> <font color="#230000" SIZE="6" FACE="algerian"><b>"JUAN PABLO II"</b></font></p>
     </div>               
     
   <ul id="navi">   
   
-  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="0026FF" size="4"><b>OBJETIVOS</b></font></a>
+  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>OBJETIVOS</b></font></a>
                   <ul>
                     <li><a href="javascript:Solicitud('index/objetivos.html','pagina')"><b>Objetivo de la Institución</b></a></li>
                     <li><a href="javascript:Solicitud('index/objetivosgenerales.html','pagina')"><b>Objetivos Generales de la Institución</b></a></li>
@@ -214,7 +200,7 @@ document.write(D);
   
   
  
-  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="0026FF" size="4"><b>HISTORIA</b></font></a>
+  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>HISTORIA</b></font></a>
                   <ul>
                     <li><a href="javascript:Solicitud('index/historia.html','pagina')"><b>Realidad Institucional</b></a></li>
                     <li><a href="javascript:Solicitud('index/antecedentes.html','pagina')"><b>Antecedentes Históricos</b></a></li>
@@ -224,15 +210,15 @@ document.write(D);
 
   
  
-  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="0026FF" size="4"><b>PERFIL ALUMNO</b></font></a>
+  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>PERFIL ALUMNO</b></font></a>
                   <ul>
-                    <li><a href="javascript:Solicitud('index/perfil.html','pagina')"><b>Egreso/Ingreso Alumno</b></a></li>                    
+                    <li><a href="javascript:Solicitud('index/perfil.html','pagina')"><b>Perfil de Egreso/Ingreso del Alumno</b></a></li>                    
                   </ul>
   </li>
   
   
   
-  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="0026FF" size="4"><b>FOTOS</b></font></a>
+  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>FOTOS</b></font></a>
                   <ul>
                     <li><a href="javascript:Solicitud('index/imagenes.html','pagina')"><b>Imágenes</b></a></li>                                        
                   </ul>
@@ -240,7 +226,7 @@ document.write(D);
 
  
    
-  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="0026FF" size="4"><b>CONTÁCTENOS</b></font></a>
+  <li><a href="#"><font FACE="LUCIDA CONSOLE" color="C13131" size="3"><b>CONTÁCTENOS</b></font></a>
                   <ul>
                     <li><a href="javascript:Solicitud('index/contactenos.html','pagina')"><b>Información</b></a></li>                    
                   </ul>

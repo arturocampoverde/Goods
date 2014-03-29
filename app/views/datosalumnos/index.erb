@@ -1,11 +1,13 @@
-<div id="pagina" style="background-image: url(/assets/alum1111.jpg); height: 505px; width: 1300px; border: 1px solid black;">    
-<%#*<center><h3><font color ="#0015FF"> DATOS DEL ESTUDIANTE </font> </h3></center>%>
+<div id="pagina" style="background-image: url(/assets/PAPAJUAN2232.jpg); height: 505px; width: 1300px; border: 1px solid black;">    
+<center><h3><font color ="#0015FF"> DATOS DEL ESTUDIANTE </font> </h3></center>
 <% @users.each do |f| %>
 <table>
-<%#*<div class="field">%>
-<b><font size="4">DATOS DE USUARIO</font></b>
+<div class="field">
+<b><font size="3">DATOS DE USUARIO</font></b>
+<p>
 <tr><td><font size="2">Nombre de Usuario:</font>
 <font color ="#0013E2" size="2"><%= f.username %></font></td></tr>
+</p>
 </div>
 
 <div class="field">
@@ -19,7 +21,7 @@
 <%end%>
 
 
-<b><font size="4">DATOS PERSONALES</font></b>
+<b><font size="3">DATOS PERSONALES</font></b>
 <% @person.each do |p| %>
 <table>
 <div class="field">
@@ -38,6 +40,7 @@
 </div>
 
 
+
 <div class="field">
 <p>
 <tr><td><font size="2">Apellidos:</font>
@@ -72,11 +75,16 @@
 </table>
 <%end%>
 <br>
-<b><font size="4">DATOS DEL REPRESENTANTE</font></b>
-<div class="field">
+<b><font size="3">DATOS DEL REPRESENTANTE</font></b>
+<%#*<div class="field">%>
+<%#*<p><font size="4">Nombres:</font>%>
+  <%#*<font color ="#AA1D34" size="3">%>
+  <%#= p.pers_nombre%></p>
+  <%#*</font>%>
+<%#*</div>%>
 <% @repre.each do |p| %>
 <table>
-
+<div class="field">
 <p>
 <tr><td><font size="2">Cédula:</font>
 <font color ="#0013E2" size="2"><%= p.pers_cedula %></font></td></tr>
@@ -126,5 +134,9 @@
 </div>
 </table>
 <%end%>
+
+
+  
+
 </div>
 

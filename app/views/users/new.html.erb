@@ -1,13 +1,10 @@
 <html>
-    <link rel="stylesheet" href="/stylesheets/style.css"></link>
+  
   <head>
     <script language="JavaScript">/*Esta es una funcion para verificar la cedula en el checkbox de lapagina*/
       function check_cedula( form )
       {      
-      
-      
-      var cedula = $('.pers_ced').val();/*ayuda con respecto a cadenas(string) crear arrays de cadenas en base aun elemento indicador del Split como cedula*/
-      //alert(cedula);
+      var cedula = form.cedula.value;/*ayuda con respecto a cadenas(string) crear arrays de cadenas en base aun elemento indicador del Split como cedula*/
       array = cedula.split( "" );/*ayuda a medir el numero de caracteres de un array*/num = array.length;/*Aqui comprobamos que el numero ingresado tiene que tener diezcaracteres para ingresar a la condición sino no ingresa para verificar*/
       if ( num == 10 ){total = 0;digito = (array[9]*1);for( i=0; i < (num-1); i++ ){mult = 0;if ( ( i%2 ) != 0 ) {total = total + ( array[i] * 1 );}
       else{mult = array[i] * 2;
@@ -39,109 +36,266 @@
     return ((tecla > 47 && tecla < 58) || tecla == 46 || tecla ==8);
 }
 </script>
-<div id="login-form">
-<%= form_for @user, :url => {:action=>"create"} do |f|%>
-  <fieldset>
-  <h3>DATOS DE USUARIO</h3>
-  <!--<fieldset>-->
-    <%= f.text_field :username, :placeholder=>"Usuario" %><font color="#E20000" size="2"><%= @user.errors[:username] if @user.errors.any? %></font>
-    <%= f.text_field :email, :placeholder=>"Email" %><font color="#E20000" size="2"><%= @user.errors[:email] if @user.errors.any? %></font>
-    <%= f.password_field :password, :placeholder=>"Contraseña"  %><font color="#E20000" size="2"><%= @user.errors[:password] if @user.errors.any? %></font>
+    
 
-    <%if @estudiante != "true"%>
-      <%= f.hidden_field :usu_estado, :value=>"A"%>
-    <%else%>
-      <%= f.hidden_field :usu_estado, :value=>"I"%>
-    <%end%>
+ 
+<h1>CREAR PERSONA</h1>
+<div id="content">
+<div id="wrapper">
+  <div id="steps">
+      <%= form_for @user, :url => {:action=>"create"} do |f|%>
+      <fieldset class="step">
+        <legend>USUARIO</legend>
+          <% if @user.errors.any? %>
+            <div class="error_messages">
+              <h2>Formulario Incorrecto</h2>
+                <ul>                  
+                  <% for message in @user.errors.full_messages %>
+                          <br>
+                    <li><font color="#E20000"><%= message %></font></li>
+                 <% end %>
+                </ul>
+              
+            </div>
+        
+          <% end %>
 
-    <%= f.password_field :password_confirmation, :placeholder=>"Confirme Contraseña"%>
-
-    <%if @estudiante == "true"%>
-      <%= hidden_field_tag(:estudiante, value = "true")%>
-    <%end%>
-  <!--</fieldset>-->
-
-  <h3>DATOS PERSONALES</h3>
-  <!--<fieldset>-->
-  <%= fields_for :persona do |f| %>
-    <%= form_for @person, :url => {:action=>"create"} do |f|%>
-      <% if @person.errors.any? %>
-        <div class="error_messages">
-          <div align="left">                  
-            <% for message in @person.errors.full_messages %>
-              <font color="#E20000"><%= message %></font>
-            <% end %>
-          </div>
-        </div>      
-      <% end %>
-      <div onkeypress="return ValidNum(event)">    
-        <form method="post">
-          <%= f.text_field :pers_cedula, :placeholder=>"Cédula", :class=>"pers_ced"%><%= @person.errors.full_messages.first if @person.errors.any? %></font>
-          <input name="send" type="button" value="Comprobar Cédula" onClick="return check_cedula(this.form);" />
-        </form>
-      </div>
-      <div onkeypress="return isNumberKey(event)">  
-        <%= f.text_field :pers_nombre, :placeholder=>"Nombres" %>
-      </div>
-      <div onkeypress="return isNumberKey(event)">  
-        <%= f.text_field :pers_apellido, :placeholder=>"Apellidos" %>
-      </div>
-      <%= f.text_field :pers_direccion, :placeholder=>"Dirección" %>
-      <div onkeypress="return ValidNum(event)">
-        <%= f.text_field :pers_telefono1, :placeholder=>"Telefono Convencional" %>
-        <%= f.text_field :pers_telefono2, :placeholder=>"Celular" %>
-      </div>
-     <div>
-     <%= f.text_field :pers_email, :placeholder=>"Email" %>
-     </div>
-    <%end%> <!-- -------------------------------------- FIN DEL FORM FOR @person-->
-
-    <%if @estudiante != "true"%>
-      <h3>TIPO DE PERSONA</h3>
-      <%= fields_for :tipo do |f| %>          
-        <div onkeypress="return isNumberKey(event)">  
-          <%= f.text_field :tip_descrip, :placeholder=>"Descripcion" %>
-        </div>
-      <%end%>   
-    <%else%>
-      <%= fields_for :tipo do |f| %>
-        <div onkeypress="return isNumberKey(event)">
-          <%= f.hidden_field :tip_descrip, :value=>"ALUMNO"%>
-        </div>
-      <%end%>
-    <%end%>    
-  <!--</fieldset>-->
-  <%#*<h3>REPRESENTANTE</h3>%>
-  <%#*<!--<fieldset>-->%>
-  <%#= fields_for :repre do |f| %>
-    <%#= f.text_field :pers_cedula, :placeholder=>"Cédula" %>
-    <%#*<div onkeypress="return isNumberKey(event)">%>
-      <%#= f.text_field :pers_nombre, :placeholder=>"Nombres" %>
-    <%#*</div>%>
-    <%#*<div onkeypress="return isNumberKey(event)">%> 
-      <%#= f.text_field :pers_apellido, :placeholder=>"Apellidos" %>
-    <%#*</div>%>
-    <%#= f.text_field :pers_direccion, :placeholder=>"Dirección" %>
-    <%#*<div onkeypress="return ValidNum(event)">%>
-      <%#= f.text_field :pers_telefono1, :placeholder=>"Telefono Convencional" %>
-    <%#*</div>%>
-    <%#*<div onkeypress="return ValidNum(event)">%>
-      <%#= f.text_field :pers_telefono2, :placeholder=>"Telefono Celular" %>
-    <%#*</div>%>  
-
-  
-  <%#end%>
-  <%#= fields_for :representante do |f| %> 
-    <%#*<div onkeypress="return isNumberKey(event)">%>
-      <%#= f.text_field :repre_parentesco, :placeholder=>"Parentezco" %>
-    <%#*</div>%>
-  <%#end%>
-<%end%> <!-- -------------------------------------- FIN DEL FIELDS FOR :persona-->
-<%= f.submit "REGISTRAR" %>
-</fieldset>
-<% end %>
+       
+        
+          <div align="center">  
+<div class="field">
+<font color ="#AA1D34" size="4">
+<%= f.label :Usuario %>
+</font>
+<%= f.text_field :username %>
 </div>
+
+<div class="field">
+  <font color ="#AA1D34" size="4">
+<%= f.label :Correo_Electronico %>
+  </font>
+<%= f.text_field :email %>
+</div>
+
+<div class="field">
+<font color ="#AA1D34" size="4">
+<%= f.label :Contraseña %>
+</font>
+<%= f.password_field :password %>
+</div>
+<%if @estudiante != "true"%>
+  <%= f.hidden_field :usu_estado, :value=>"A"%>
+<%else%>
+  <%= f.hidden_field :usu_estado, :value=>"I"%>
+<%end%>
+<div class="field">
+<font color ="#AA1D34" size="4">
+<%= f.label :Confirmar_Contraseña %>
+</font>
+<%= f.password_field :password_confirmation%>
+</div>
+
+            <%if @estudiante == "true"%>
+              <%= hidden_field_tag(:estudiante, value = "true")%>
+            <%end%>
+
+            
+<div class="actions"><%= f.submit "REGISTRAR USUARIO" %></div>
+</div>
+                 
+        
+        
+        
+      <fieldset class="step">
+        <legend>DATOS PERSONALES</legend>
+          <%= fields_for :persona do |f| %>
+             
+              <%= form_for @person, :url => {:action=>"create"} do |f|%>
+      <fieldset class="step">
+        <legend>USUARIO</legend>
+          <% if @person.errors.any? %>
+            <div class="error_messages">
+              <h2>Formulario Incorrecto</h2>
+                <div align="left">                  
+                  <% for message in @person.errors.full_messages %>                          
+                    <p><font color="#E20000"><%= message %></font></p> 
+                 <% end %>                
+              </div>  
+            </div>
+            
+          <% end %>
+        
+        
+         <div onkeypress="return ValidNum(event)">
+          <p>
+            <form method="post">
+            <%= f.label :Cedula %>
+            <%= f.text_field :pers_cedula %> <input name="cedula" type="text" />
+            <input name="send" type="button" value="Comprobar Cédula" onClick="return check_cedula(this.form);" />
+            </form>
+          </p>
+          </div>             
+        
+        <%#*<form method="post">Cedula Validación:<input name="cedula" type="text" />%>
+        <%#*<input name="send" type="button" value="Validar" onClick="return check_cedula(this.form);" />%>
+        <%#*</form>%>
+
+                    
+          <div onkeypress="return isNumberKey(event)">  
+          <p>
+            <%= f.label :Nombres %>
+            <%= f.text_field :pers_nombre %>
+          </p>
+          <p>
+            <%= f.label :Apellidos %>
+            <%= f.text_field :pers_apellido %>
+          </p>
+          </div>
+          
+          
+          
+          <p>
+            <%= f.label :Direccion %>
+            <%= f.text_field :pers_direccion %>
+          </p>
+          
+          
+          
+          <div onkeypress="return ValidNum(event)">
+          <p>
+            <%= f.label :"Telefono Convencional" %>
+            <%= f.text_field :pers_telefono1 %>
+          </p>
+          <p>
+            <%= f.label :"Telefono Celular" %>
+            <%= f.text_field :pers_telefono2 %>
+          </p>
+          </div>
+          
+          
+          
+          <p>
+            <%= f.label :"Correo Electronico" %>
+            <%= f.text_field :pers_email %>
+          </p>
+          <%end%>        
+          </fieldset>
+        
+        
+        
+      
+          
+        <%if @estudiante != "true"%>
+        <fieldset class="step">
+        <legend>TIPO DE PERSONA</legend>
+          <%= fields_for :tipo do |f| %>          
+          
+        <div onkeypress="return isNumberKey(event)"> 
+          <p>
+            <%= f.label :Descripcion %>
+            <%= f.text_field :tip_descrip %>
+          </p>
+        </div>
+          <%end%>   
+          </fieldset>
+        <%else%>
+          <%= fields_for :tipo do |f| %>
+            <div onkeypress="return isNumberKey(event)">
+              <p>
+                <%= f.hidden_field :tip_descrip, :value=>"ALUMNO"%>
+              </p>
+            </div>
+          <%end%>
+        <%end%>
+        
+      
+        
+        <fieldset class="step">
+        <legend>REPRESENTANTES</legend>
+          <%= fields_for :repre do |f| %>
+          
+          
+          <p>
+            <%= f.label :Cedula %>
+            <%= f.text_field :pers_cedula %>
+          </p>
+          
+          
+          
+          
+          <div onkeypress="return isNumberKey(event)"> 
+          <p>
+            <%= f.label :Nombres %>
+            <%= f.text_field :pers_nombre %>
+          </p>
+          <p>
+            <%= f.label :Apellidos %>
+            <%= f.text_field :pers_apellido %>
+          </p>
+          </div>
+          
+          
+          
+          <p>
+            <%= f.label :Direccion %>
+            <%= f.text_field :pers_direccion %>
+          </p>
+          
+          <div onkeypress="return ValidNum(event)">
+          <p>
+            <%= f.label :"Telefono Convencional" %>
+            <%= f.text_field :pers_telefono1 %>
+          </p>
+          <p>
+            <%= f.label :"Telefono Celular" %>
+            <%= f.text_field :pers_telefono2 %>
+          </p>
+          </div>
+          
+          
+          
+          
+          <p>
+            <%= f.label :"Correo Electronico" %>
+            <%= f.text_field :pers_email %>
+          </p>
+          
+          
+          <%end%>
+          
+          <%= fields_for :representante do |f| %> 
+         <div onkeypress="return isNumberKey(event)"> 
+          <p>
+              <%= f.label :"Parentesco" %>
+              <%= f.text_field :repre_parentesco %>
+          </p>
+         </div>
+          <%end%>
+          </fieldset>
+        <%end%>
+        
+        
+           
+      
+
+      <% end %>
+    <!--</form>-->
+  </div>
+  <div id="navigation" style="display:none;">
+    <ul>
+      <li class="selected">
+        <a href="#">Cuenta</a>
+      </li>
+      <li>
+        <a href="#">Datos Personales</a>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+
 </body>
 </html>
+
 
 <center><%= link_to "Regresar al Menú Principal", asignaturas_menu_principal_admin_path %></center>
